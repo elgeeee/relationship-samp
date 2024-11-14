@@ -7,5 +7,8 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
-    public function showAllUsers() {}
+    public function showCourseUser(Course $course, Request $request){
+        $users = $course->users;
+        return view('course_user', compact('users', 'course'));
+    }
 }

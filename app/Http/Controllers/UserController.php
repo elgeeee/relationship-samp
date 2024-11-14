@@ -7,15 +7,18 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function showUserProfile($id)
+    public function showUserProfile(User $user, Request $request)
     {
-        $user = User::with('profile')->findOrFail($id);
-        return view('users.profile', compact('user'));
+        $profile = $user->load('profile')->profile;
+        if (!$profile) {
+            $profile = null;  
+        }
+        return view('profiles', compact('user', 'profile'));
     }
 
-    public function showUserCourses($id)
+    public function showUserCourse(User $user, Request $reqeust) 
     {
-        $user = User::with('courses')->findOrFail($id);
-        return view('users.courses', compact('user'));
+        $courses = $user->load('courses')->courses;
+        return view('user_courses', compact('user', 'courses'));
     }
 }

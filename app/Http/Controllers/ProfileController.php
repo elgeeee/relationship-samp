@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Course;
 use App\Models\Profile;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function showAllProfiles()
+    public function showUsers()
     {
         $profiles = Profile::with('user')->get();
-        return view('profiles.index', compact('profiles'));
+        $courses = Course::all();
+        return view('users', compact('profiles', 'courses'));
     }
 }

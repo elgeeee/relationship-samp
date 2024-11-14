@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -13,12 +14,14 @@ class CourseFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
-     */
+     **/
+    protected $model = Course::class;
+    
     public function definition(): array
     {
         return [
-            'user_id' => fake()->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-            'course_name' => Str::random(10),
+            "course_name"=>fake()->jobTitle(),
         ];
     }
+    
 }

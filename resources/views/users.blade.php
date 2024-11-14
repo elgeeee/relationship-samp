@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Users</title>
+    <title>Users and Courses</title>
 </head>
 <body>
-    <h1>Users in {{ $course->title }}</h1>
-    <ul>
-        @foreach ($course->users as $user)
-            <li>{{ $user->name }}</li>
-        @endforeach
-    </ul>
+    <header>
+        <h1>Users and Courses</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Users</h2>
+            <ul>
+                @foreach ($profiles as $profile)
+                    <li>
+                        <p>{{ $profile->user->name }}</p>
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Courses</h2>
+            <ul>
+                @foreach ($courses as $course)
+                    <li>
+                        <a href="/course/{{ $course->id }}">{{ $course->course_name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+    </main>
 </body>
 </html>

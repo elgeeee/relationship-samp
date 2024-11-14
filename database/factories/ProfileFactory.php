@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Profile>
@@ -14,12 +16,13 @@ class ProfileFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition(): array
     {
         return [
-            'user_id' => fake()->randomElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-            'bio' => Str::random(5),
-            'school' => Str::random(10),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'bio'=> Str::random(5),
+            'school'=>fake()->company(),
         ];
     }
 }
