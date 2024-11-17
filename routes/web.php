@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', [ProfileController::class, 'showUsers'])->name('showUsers');
+Route::get('/profiles', [ProfileController::class, 'showUsers'])->name('showUsers');
 
 Route::get('/profile/{user}', [UserController::class,'showUserProfile'])->name('showUserProfile');
 
