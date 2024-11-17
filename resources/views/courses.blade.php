@@ -10,7 +10,7 @@
     <h1>Courses for {{ $user->name }}</h1>
     <ul>
         @foreach ($user->courses as $course)
-            <li>{{ $course->title }}</li>
+            <li>{{ $course->course_name }}</li>
         @endforeach
     </ul>
 </body>

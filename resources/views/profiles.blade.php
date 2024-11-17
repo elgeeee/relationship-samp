@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profiles</title>
+    <title>{{ $user->name }}'s Profile</title>
 </head>
 <body>
     <header>
-        <h1>Profile</h1>
+        <h1>{{ $user->name }}'s Profile</h1>
+        <p>Email: {{ $user->email }}</p>
+        <p>Bio: {{ $user->profile->bio ?? 'No bio available' }}</p>
     </header>
 
     <main>
-        <section>
-            <p><strong>Name:</strong> {{ $user->name }}</p>
-            <p><strong>Bio:</strong> {{ $profile->bio }}</p>
-            <p><strong>School:</strong> {{ $profile->school }}</p>
-        </section>
+        <h2>Enrolled Courses</h2>
+        <ul>
+            @foreach ($user->courses as $course)
+                <li>{{ $course->course_name }}</li>
+            @endforeach
+        </ul>
+
+        <a href="{{ route('users') }}">Back to Users</a>
     </main>
 </body>
 </html>

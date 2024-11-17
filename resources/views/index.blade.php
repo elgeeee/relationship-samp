@@ -8,11 +8,8 @@
 </head>
 <body>
     <h1>All User Profiles</h1>
-    @foreach ($profiles as $profile)
-        <div>
-            <h2>{{ $profile->user->name }}</h2>
-            <p>Profile Bio: {{ $profile->bio }}</p>
-        </div>
-    @endforeach
+        @foreach($users as $user)
+            <li>{{ $user->name }}</li>
+        @endforeach
 </body>
 </html>

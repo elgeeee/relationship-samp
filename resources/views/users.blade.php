@@ -13,12 +13,15 @@
 
     <main>
         <section>
-            <h2>Users</h2>
+            <h2>All Users</h2>
             <ul>
-                @foreach ($profiles as $profile)
-                    <li>
-                        <p>{{ $profile->user->name }}</p>
-                    </li>
+                @foreach ($users as $user)
+                        {{ $user->name }} ({{ $user->email }})
+                        <ul>
+                            @foreach ($user->courses as $course)
+                                <li>{{ $course->course_name }}</li>
+                            @endforeach
+                        </ul>
                 @endforeach
             </ul>
         </section>
