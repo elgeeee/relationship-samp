@@ -34,8 +34,8 @@ class UserController extends Controller
             'bio' => $request->bio,
         ]);
 
-        $user->courses()->attach($request->courses);
-
+        $user->courses()->attach($validated['courses']);
+        
         return redirect()->route('showUsers', $user->id)
             ->with('success', 'User created and added to courses successfully.');
     }

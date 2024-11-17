@@ -11,15 +11,23 @@
     </header>
 
     <main>
-        @if ($course->users->isEmpty())
-            <p>No users are enrolled in this course yet.</p>
-        @else
-            <ul>
+        <section>
+            <h2>Course Information</h2>
+            <p><strong>Title:</strong> {{ $course->course_name }}</p>
+            <p><strong>Description:</strong> {{ $course->description ?? 'No description available' }}</p>
+        </section>
+
+        <section>
+            <h2>Enrolled Users</h2>
+            @if($course->users->isEmpty())
+                <p>No users are enrolled in this course yet.</p>
+            @else
                 @foreach ($course->users as $user)
-                    <li>{{ $user->name }} (Email: {{ $user->email }})</li>
+                    {{ $user->name }} ({{ $user->email }})
                 @endforeach
-            </ul>
-        @endif
+            @endif
+        </section>
+
     </main>
 </body>
 </html>

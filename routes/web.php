@@ -15,9 +15,10 @@ Route::get('users/store', [UserController::class, 'store'])->name('store');
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('showUsers');
 Route::get('user/{id}', [ProfileController::class, 'showUserProfile'])->name('showUserProfile');
+Route::post('user/{userId}/enroll/{course}', [UserController::class, 'enrollInCourse'])->name('enrollInCourse');
 
 Route::get('/profiles/{user}', [UserController::class,'showUserProfile'])->name('showUserProfile');
 
 Route::get('/users/{user}', [UserController::class, 'showUserCourse'])->name('showUserCourse');
 
-Route::get('/courses/{id}', [CourseController::class,'showCourseUsers'])->name('showCourseUsers');
+Route::get('/course/{course}', [CourseController::class,'showCourseUsers'])->name('showCourseUsers');

@@ -14,8 +14,6 @@ class CourseUserSeeder extends Seeder
      */
     public function run(): void
     {
-        Course::factory()->count(5)->create();
-
-        User::factory()->count(10)->create();
+        User::factory(10)->create();
     }
 }

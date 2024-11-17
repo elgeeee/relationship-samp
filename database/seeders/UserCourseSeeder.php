@@ -14,11 +14,14 @@ class UserCourseSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::all();
-        $courses = Course::all();
+        $courses = Course::factory(5)->create();
 
-        foreach ($users as $user){
-            $user->courses()->attach($courses->unique()->random());
+        $users = User::factory(10)->create();
+
+        foreach ($users as $user) {
+            $user->courses()->attach(
+                $courses->random(2)->pluck('id')
+            );
         }
     }
 }

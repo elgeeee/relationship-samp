@@ -14,14 +14,16 @@
     </header>
 
     <main>
-        <h2>Enrolled Courses</h2>
-        <ul>
-            @foreach ($user->courses as $course)
-                <li>{{ $course->course_name }}</li>
-            @endforeach
-        </ul>
-
-        <a href="{{ route('users') }}">Back to Users</a>
+        <h3>Enrolled Courses:</h3>
+        @if($user->courses->isEmpty())
+            <p>No courses enrolled yet.</p>
+        @else
+            <ul>
+                @foreach($user->courses as $course)
+                    <li>{{ $course->course_name }}</li>
+                @endforeach
+            </ul>
+        @endif
     </main>
 </body>
 </html>

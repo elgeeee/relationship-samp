@@ -38,9 +38,9 @@
                 
                 <div>
                     <label for="courses">Select Courses:</label>
-                    <select name="courses[]" id="courses" multiple required>
-                        @foreach($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                    <select name="courses[]" multiple required>
+                        @foreach ($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->title }}</option>
                         @endforeach
                     </select>
                 </div>
